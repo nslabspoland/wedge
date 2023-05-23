@@ -5,7 +5,8 @@
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
     "editor.minimap.enabled": false,
-    
+    "workbench.editor.tabCloseButton": "left",
+
 
     // php-cs
     "phpCodeSniffer.standard": "Automatic",
