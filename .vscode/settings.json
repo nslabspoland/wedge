@@ -3,5 +3,9 @@
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "file"
+    "editor.formatOnSaveMode": "file",
+
+    // php-cs
+    "phpCodeSniffer.standard": "Automatic",
+    "phpCodeSniffer.lintAction": "Change"
 }
