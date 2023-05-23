@@ -1,9 +1,6 @@
-#### ATTENTION: You do not need to run or use this file!  The install.php script does everything for you!
-#### Install script for MySQL 5.0.3+
+--- ATTENTION: You do not need to run or use this file!  The install.php script does everything for you! Install script for MySQL 5.0.3+
+--- Table structure for table `admin_info_files`
 
-#
-# Table structure for table `admin_info_files`
-#
 
 CREATE TABLE {$db_prefix}admin_info_files (
 	id_file tinyint(4) unsigned NOT NULL auto_increment,
@@ -16,10 +13,7 @@ CREATE TABLE {$db_prefix}admin_info_files (
 	KEY filename (filename(30))
 ) ENGINE=MyISAM;
 
-#
-# Dumping data for table `admin_info_files`
-#
-
+--- Dumping data for table `admin_info_files`
 INSERT INTO {$db_prefix}admin_info_files
 	(id_file, filename, path, parameters, data, filetype)
 VALUES
@@ -30,20 +24,12 @@ VALUES
 	(5, 'latest-smileys.js', '/files/', 'language=%1$s&version=%3$s', '', 'text/javascript'),
 	(6, 'latest-support.js', '/files/', 'language=%1$s&version=%3$s', '', 'text/javascript'),
 	(7, 'latest-themes.js', '/files/', 'language=%1$s&version=%3$s', '', 'text/javascript');
-# --------------------------------------------------------
 
-#
-# Table structure for table `approval_queue`
-#
-
+--- Table structure for table `approval_queue`
 CREATE TABLE {$db_prefix}approval_queue (
 	id_msg int(10) unsigned NOT NULL default 0,
 	PRIMARY KEY (id_msg)
 ) ENGINE=MyISAM;
-
-#
-# Table structure for table `attachments`
-#
 
 CREATE TABLE {$db_prefix}attachments (
 	id_attach int(10) unsigned NOT NULL auto_increment,
@@ -67,10 +53,6 @@ CREATE TABLE {$db_prefix}attachments (
 	KEY attachment_type (attachment_type)
 ) ENGINE=MyISAM;
 
-#
-# Table structure for table `bans`
-#
-
 CREATE TABLE {$db_prefix}bans (
 	id_ban int(10) unsigned NOT NULL auto_increment,
 	hardness tinyint(3) unsigned NOT NULL default 0,
@@ -83,10 +65,6 @@ CREATE TABLE {$db_prefix}bans (
 	PRIMARY KEY (id_ban),
 	KEY ban_type (ban_type)
 ) ENGINE=MyISAM;
-
-#
-# Table structure for table `bbcode`
-#
 
 CREATE TABLE {$db_prefix}bbcode (
 	id_bbcode mediumint(8) unsigned NOT NULL auto_increment,
@@ -112,10 +90,6 @@ CREATE TABLE {$db_prefix}bbcode (
 	id_plugin varchar(255) NOT NULL default '',
 	PRIMARY KEY (id_bbcode)
 ) ENGINE=MyISAM;
-
-#
-# Dumping data for table `bbcode`
-#
 
 INSERT INTO {$db_prefix}bbcode
 	(`id_bbcode`, `tag`, `len`, `bbctype`, `before_code`, `after_code`, `content`, `disabled_before`, `disabled_after`, `disabled_content`, `block_level`, `test`, `validate_func`, `disallow_children`, `require_parents`, `require_children`, `parsed_tags_allowed`, `quoted`, `params`, `trim_wspace`, `id_plugin`)
@@ -176,11 +150,6 @@ VALUES
 	(54, 'u', 1, 'parsed', '<span class="bbc_u">', '</span>', '', '', '', '', 0, '', '', '', '', '', '', 'none', '', 'none', ''),
 	(55, 'url', 3, 'unparsed_content', '', '', '<a href="$1" class="bbc_link" rel="nofollow" target="_blank">$1</a>', '', '', '', 0, '', '$data = strtr($data, array(''<br>'' => ''''));\nif (strpos($data, ''http://'') !== 0 && strpos($data, ''https://'') !== 0)\n	$data = ''http://'' . $data;', '', '', '', '', 'none', '', 'none', ''),
 	(56, 'url', 3, 'unparsed_equals', '<a href="$1" class="bbc_link" rel="nofollow" target="_blank">', '</a>', '', '', '($1)', '', 0, '', 'if (strpos($data, ''http://'') !== 0 && strpos($data, ''https://'') !== 0)\n	$data = ''http://'' . $data;', 'email,ftp,url,iurl', '', '', '', 'none', '', 'none', '');
-# --------------------------------------------------------
-
-#
-# Table structure for table `board_groups`
-#
 
 CREATE TABLE {$db_prefix}board_groups (
 	id_board mediumint(8) unsigned NOT NULL default 0,
@@ -190,10 +159,6 @@ CREATE TABLE {$db_prefix}board_groups (
 	PRIMARY KEY (id_group, id_board)
 ) ENGINE=MyISAM;
 
-#
-# Dumping data for table `board_groups`
-#
-
 INSERT INTO {$db_prefix}board_groups
 	(`id_board`, `id_group`, `view_perm`, `enter_perm`)
 VALUES
@@ -201,11 +166,6 @@ VALUES
 	(1, 0, 'allow', 'allow'),
 	(1, 2, 'allow', 'allow'),
 	(2, 2, 'allow', 'allow');
-# --------------------------------------------------------
-
-#
-# Table structure for table `board_members`
-#
 
 CREATE TABLE {$db_prefix}board_members (
 	id_member mediumint(8) unsigned NOT NULL default 0,
@@ -213,10 +173,6 @@ CREATE TABLE {$db_prefix}board_members (
 	permission enum('access', 'deny') NOT NULL default 'access',
 	PRIMARY KEY (id_member, id_board, permission)
 ) ENGINE=MyISAM;
-
-#
-# Table structure for table `board_permissions`
-#
 
 CREATE TABLE {$db_prefix}board_permissions (
 	id_group smallint(5) NOT NULL default 0,
@@ -226,15 +182,10 @@ CREATE TABLE {$db_prefix}board_permissions (
 	PRIMARY KEY (id_group, id_profile, permission)
 ) ENGINE=MyISAM;
 
-#
-# Dumping data for table `board_permissions`
-#
-
 INSERT INTO {$db_prefix}board_permissions
 	(id_group, id_profile, permission)
 VALUES
 	(-1, 1, 'poll_view'),
-
 	(0, 1, 'remove_own'),
 	(0, 1, 'lock_own'),
 	(0, 1, 'mark_any_notify'),
@@ -256,7 +207,6 @@ VALUES
 	(0, 1, 'report_any'),
 	(0, 1, 'send_topic'),
 	(0, 1, 'view_attachments'),
-
 	(2, 1, 'moderate_board'),
 	(2, 1, 'post_new'),
 	(2, 1, 'post_reply_own'),
@@ -288,7 +238,6 @@ VALUES
 	(2, 1, 'approve_posts'),
 	(2, 1, 'post_attachment'),
 	(2, 1, 'view_attachments'),
-
 	(3, 1, 'moderate_board'),
 	(3, 1, 'post_new'),
 	(3, 1, 'post_reply_own'),
@@ -320,9 +269,7 @@ VALUES
 	(3, 1, 'approve_posts'),
 	(3, 1, 'post_attachment'),
 	(3, 1, 'view_attachments'),
-
 	(-1, 2, 'poll_view'),
-
 	(0, 2, 'remove_own'),
 	(0, 2, 'lock_own'),
 	(0, 2, 'mark_any_notify'),
@@ -340,7 +287,6 @@ VALUES
 	(0, 2, 'report_any'),
 	(0, 2, 'send_topic'),
 	(0, 2, 'view_attachments'),
-
 	(2, 2, 'moderate_board'),
 	(2, 2, 'post_new'),
 	(2, 2, 'post_reply_own'),
@@ -372,7 +318,6 @@ VALUES
 	(2, 2, 'approve_posts'),
 	(2, 2, 'post_attachment'),
 	(2, 2, 'view_attachments'),
-
 	(3, 2, 'moderate_board'),
 	(3, 2, 'post_new'),
 	(3, 2, 'post_reply_own'),
@@ -561,11 +506,6 @@ VALUES
 	(3, 4, 'approve_posts'),
 	(3, 4, 'post_attachment'),
 	(3, 4, 'view_attachments');
-# --------------------------------------------------------
-
-#
-# Table structure for table `boards`
-#
 
 CREATE TABLE {$db_prefix}boards (
 	id_board mediumint(8) unsigned NOT NULL auto_increment,
@@ -613,20 +553,11 @@ CREATE TABLE {$db_prefix}boards (
 	KEY urllen (urllen)
 ) ENGINE=MyISAM;
 
-#
-# Dumping data for table `boards`
-#
-
 INSERT INTO {$db_prefix}boards
 	(id_board, id_cat, board_order, id_last_msg, id_msg_updated, name, description, url, urllen, num_topics, num_posts, member_groups, offlimits_msg)
 VALUES
 	(1, 1, 1, 1, 1, '{$default_board_name}', '{$default_board_description}', '{$domain}/{$default_board_url}', CHAR_LENGTH('{$domain}/{$default_board_url}'), 1, 1, '-1,0,2', ''),
 	(2, 1, 2, 0, 0, '{$default_recycling_board_name}', '{$default_recycling_board_description}', '{$default_recycling_board_url}', CHAR_LENGTH('{$default_recycling_board_url}'), 0, 0, '2', '');
-# --------------------------------------------------------
-
-#
-# Table structure for table `categories`
-#
 
 CREATE TABLE {$db_prefix}categories (
 	id_cat tinyint(4) unsigned NOT NULL auto_increment,
@@ -637,27 +568,14 @@ CREATE TABLE {$db_prefix}categories (
 	UNIQUE id_cat (id_cat)
 ) ENGINE=MyISAM;
 
-#
-# Dumping data for table `categories`
-#
-
 INSERT INTO {$db_prefix}categories
 VALUES (1, 0, '{$default_category_name}', 1);
-# --------------------------------------------------------
-
-#
-# Table structure for table `collapsed_categories`
-#
 
 CREATE TABLE {$db_prefix}collapsed_categories (
 	id_cat tinyint(4) unsigned NOT NULL default 0,
 	id_member mediumint(8) unsigned NOT NULL default 0,
 	PRIMARY KEY (id_cat, id_member)
 ) ENGINE=MyISAM;
-
-#
-# Table structure for table `contact_lists`
-#
 
 CREATE TABLE {$db_prefix}contact_lists (
 	id_list mediumint(8) unsigned NOT NULL auto_increment,
@@ -671,10 +589,6 @@ CREATE TABLE {$db_prefix}contact_lists (
 	KEY member (id_owner)
 ) AUTO_INCREMENT=100 ENGINE=MyISAM;
 
-#
-# Table structure for table `contacts`
-#
-
 CREATE TABLE {$db_prefix}contacts (
 	id_member mediumint(8) unsigned NOT NULL default 0,
 	id_owner mediumint(8) unsigned NOT NULL default 0,
@@ -687,10 +601,6 @@ CREATE TABLE {$db_prefix}contacts (
 	PRIMARY KEY (id_member, id_list, list_type),
 	KEY member (id_owner)
 ) ENGINE=MyISAM;
-
-#
-# Table structure for table `custom_fields`
-#
 
 CREATE TABLE {$db_prefix}custom_fields (
 	id_field smallint(5) unsigned NOT NULL auto_increment,
@@ -717,10 +627,6 @@ CREATE TABLE {$db_prefix}custom_fields (
 	PRIMARY KEY (id_field),
 	UNIQUE col_name (col_name)
 ) ENGINE=MyISAM;
-
-#
-# Table structure for table `drafts`
-#
 
 CREATE TABLE {$db_prefix}drafts (
 	id_draft int(10) unsigned NOT NULL auto_increment,
