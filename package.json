@@ -1,0 +1,26 @@
+{
+  "name": "wedge",
+  "version": "1.0.0",
+  "description": "Simple playground for BB",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "wojtekxtx@tuta.io",
+      "name": "nslabspoland",
+      "url": "https://nslabspoland.com"
+    }
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nslabspoland/wedge.git"
+  },
+  "author": "nslabspoland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nslabspoland/wedge/issues"
+  },
+  "homepage": "https://github.com/nslabspoland/wedge#readme"
+}
